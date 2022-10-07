@@ -1,6 +1,6 @@
 const chai = require("chai")
 
-const test = "Hello World!";
+const test = "Once upon a midnight dreary!";
 
 describe("Chai Demo", function(){
 
@@ -18,16 +18,16 @@ describe("Chai Demo", function(){
     })
 
     it("Expect", function(){
-        chai.expect(test).to.equal("Hello World!")
+        chai.expect(test).to.equal("Once upon a midnight dreary!")
     })
 
     it("Property", function(){
         const testObject = {test};
         chai.expect(testObject).to.have.property("test")
-        chai.expect(testObject.test).to.equal("Hello World!")
+        chai.expect(testObject.test).to.equal("Once upon a midnight dreary!")
     })
     
     it("Not", function(){
-        chai.expect(test).not.to.equal("Not Hello World!")
+        chai.expect(test).not.to.equal("while I pondered, weak and weary!")
     })
 })
