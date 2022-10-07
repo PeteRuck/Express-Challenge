@@ -38,9 +38,16 @@ router.get("/getByUserName/:userName", (req, res, next) => {
     twitchModel.findOne({"userName": req.params.userName}).then(twitch =>{
             res.status(200).json(twitch)
         }).catch(next)
-    })         
+    })
+
+router.get("/getByJob/:job", (req, res, next) => {
+    twitchModel.findOne({"job": req.params.userName}).then(twitch =>{
+            res.status(200).json(twitch)
+        }).catch(next)
+    })
+
 router.get("/getByGame/:games", (req, res, next) => {
-    twitchModel.find({"games.name": req.params.name}).then(twitch =>{
+    twitchModel.findOne({"games.name": req.params.name}).then(twitch =>{
             res.status(200).json(twitch)
         }).catch(next)
     })         
