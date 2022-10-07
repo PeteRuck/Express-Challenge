@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/items', twitchRoutes);
+app.use('/twitch', twitchRoutes);
 app.use('/mongoose', mongooseRoutes);
 
 

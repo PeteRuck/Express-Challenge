@@ -54,7 +54,7 @@ router.post("/update/:id", (req, res,next) => {
     const index = streamer.indexOf(streamer.find(t => t.id == req.params.id))
 
     if(index === -1){
-        next(new Error('Invaild Index'))
+        next(new Error('Invalid Index'))
     }else{
         streamer[index] = {...streamer[index], ...req.body}
 

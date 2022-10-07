@@ -39,7 +39,7 @@ router.get("/getByUserName/:userName", (req, res, next) => {
             res.status(200).json(twitch)
         }).catch(next)
     })         
-router.get("/getByGames/:games", (req, res, next) => {
+router.get("/getByGame/:games", (req, res, next) => {
     twitchModel.find({"games.name": req.params.name}).then(twitch =>{
             res.status(200).json(twitch)
         }).catch(next)
