@@ -1,20 +1,21 @@
 const router = require("express").Router();
 const {Schema, model} = require("mongoose");
 
-const gamesSchema = new Schema({
+const gameSchema = new Schema({
     name:{type:String, required:true},
     genre:{type:String},
+
 })
 
-const streamerSchema = new Schema({
+const streamSchema = new Schema({
     userName:{type:String, required:true},
     job:{type:String, required:true},
     followers_K:{type:Number, required:true},
-    games:[gamesSchema],
+    games:[gameSchema],
     twitter:{type:String}
 })
 
-const twitchModel = model("twitch", streamerSchema);
+const twitchModel = model("twitch", streamSchema);
 
 router.get("/getAll", (req, res, next) => {
     twitchModel.find({}).then(twitch => {
@@ -41,12 +42,12 @@ router.get("/getByUserName/:userName", (req, res, next) => {
     })
 
 router.get("/getByJob/:job", (req, res, next) => {
-    twitchModel.findOne({"job": req.params.userName}).then(twitch =>{
+    twitchModel.findOne({"job": req.params.job}).then(twitch =>{
             res.status(200).json(twitch)
         }).catch(next)
     })
 
-router.get("/getByGame/:games", (req, res, next) => {
+router.get("/getByGame/:name", (req, res, next) => {
     twitchModel.findOne({"games.name": req.params.name}).then(twitch =>{
             res.status(200).json(twitch)
         }).catch(next)
